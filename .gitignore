@@ -3,6 +3,7 @@ target/
 *.class
 
 # Node / Vite
+*.tsbuildinfo
 node_modules/
 dist/
 .vite/

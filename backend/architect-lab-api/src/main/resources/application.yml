@@ -1,0 +1,20 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: architect-lab-api
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics
+  endpoint:
+    health:
+      show-details: always
+  otlp:
+    tracing:
+      endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:http://localhost:4318/v1/traces}
+architectlab:
+  jwt:
+    secret: ${ARCHITECT_LAB_JWT_SECRET:local-development-secret-change-me-please}
+    ttl-seconds: 14400

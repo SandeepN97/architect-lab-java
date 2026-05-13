@@ -1,0 +1,7 @@
+apiVersion: 1
+providers:
+  - name: ArchitectLab
+    folder: ArchitectLab
+    type: file
+    options:
+      path: /etc/grafana/provisioning/dashboards

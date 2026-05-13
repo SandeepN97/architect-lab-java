@@ -1,0 +1,19 @@
+# Java / Maven
+target/
+*.class
+
+# Node / Vite
+*.tsbuildinfo
+node_modules/
+dist/
+.vite/
+npm-debug.log*
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+
+# Runtime
+*.log
+.env

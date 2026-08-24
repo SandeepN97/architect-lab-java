@@ -1,12 +1,41 @@
-# ArchitectLab: Interactive System Design Playground
+# ArchitectLab — Interactive System Design Playground
 
-ArchitectLab is an interactive system-design playground built with Java, Spring Boot, React, Redis, PostgreSQL, Redpanda/Kafka, OpenTelemetry-ready configuration, Prometheus, and Grafana.
+> **Learn distributed systems by changing them.** Run traffic, switch rate-limiting algorithms, inject latency, inspect events, and watch telemetry change through real Spring Boot APIs and a React dashboard.
 
-It turns common system-design interview concepts into playable simulations. Users can run traffic, inject failures, publish events, inspect telemetry, compare architectures, and understand tradeoffs visually through real backend APIs and a live dashboard.
+**ArchitectLab** is a hands-on system design lab built with **Java 21, Spring Boot, React, Redis, PostgreSQL, Redpanda/Kafka, Prometheus, and Grafana**. Instead of only reading system-design diagrams, you can interact with the system and observe the tradeoffs.
+
+**Useful for:** backend engineers, Java/Spring developers, system-design interview preparation, and anyone learning distributed-systems concepts through working code.
+
+### What you can explore today
+
+| Area | What the lab demonstrates |
+| --- | --- |
+| **Rate limiting** | Fixed-window, sliding-window, and token-bucket algorithms |
+| **Traffic simulation** | Start/stop controlled request load and change RPS |
+| **Failure injection** | Add latency and observe system behavior |
+| **Security** | JWT authentication with `STUDENT`, `ADMIN`, and `OBSERVER` RBAC |
+| **Events** | In-memory event stream shaped for future Redpanda/Kafka adapters |
+| **Observability** | Micrometer metrics, Prometheus scraping, Grafana infrastructure |
+| **Architecture** | Command pattern, adapter boundaries, replaceable infrastructure |
+
+> **Current scope:** MVP 1 is the **Rate Limiter Lab + Command Center + Telemetry + JWT Security**. Redis-backed distributed limiting, Redpanda event replay, PostgreSQL audit storage, and additional labs are roadmap items rather than claimed as complete.
+
+---
+
+## Why ArchitectLab exists
+
+System design is often taught as static boxes and arrows. ArchitectLab turns those boxes into a runnable environment where you can ask questions such as:
+
+- What changes when a fixed-window limiter becomes a token bucket?
+- What does injected latency look like in telemetry?
+- Which operations should an observer, student, or administrator be allowed to perform?
+- How would an in-memory adapter evolve into Redis, Kafka/Redpanda, or PostgreSQL without rewriting the application?
+
+The goal is to connect **system-design theory, backend implementation, security, and observability** in one project that is small enough to understand and extensible enough to grow.
+
+---
 
 ## MVP 1 scope
-
-This repository intentionally starts small: **Rate Limiter Lab + Command Center + Telemetry + JWT Security**.
 
 Included today:
 
@@ -83,6 +112,8 @@ Role behavior:
 - `ADMIN`: run student actions plus cache toggles, latency injection, and lab reset.
 - `OBSERVER`: inspect telemetry and events only.
 
+> These are intentionally simple **local demo credentials** for the learning environment, not production credentials.
+
 ## Command Center API example
 
 ```bash
@@ -133,3 +164,9 @@ mvn test
 ```bash
 cd frontend/architect-lab-ui && npm install && npm run build
 ```
+
+## Contributing
+
+ArchitectLab is intentionally structured as a growing collection of small, inspectable labs. Good contributions are focused and demonstrable: a new algorithm, adapter, metric, failure mode, visualization, or learning note that makes a system-design tradeoff easier to understand.
+
+If you want to contribute, open an issue describing the behavior you want to demonstrate before making a large architectural change.
